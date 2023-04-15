@@ -3,6 +3,8 @@
  */
 package tst.reflection
 
+import com.intellij.DynamicBundle
+
 class App {
     val greeting: String
         get() {
@@ -11,5 +13,6 @@ class App {
 }
 
 fun main() {
+    DynamicBundle.INSTANCE
     println(App().greeting)
 }

@@ -16,19 +16,25 @@ plugins {
     application
 }
 
+val intellij_version = "202.8194.7"
+
 intellij {
-    version.set("221.6008.13")
+    version.set(intellij_version)
     type.set("IC")
 }
 
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
+    maven(url="https://www.jetbrains.com/intellij-repository/releases")
+    maven(url="https://cache-redirector.jetbrains.com/intellij-dependencies")
 }
 
 dependencies {
     // Align versions of all Kotlin components
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
+
+    runtimeOnly("com.jetbrains.intellij.platform:core-impl:${intellij_version}")
 
     // Use the Kotlin JDK 8 standard library.
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
